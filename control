@@ -1,0 +1,9 @@
+Package: com.hama.vipoverlay
+Name: HAMA VIP Overlay
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Displays a user-provided static image overlay in selected apps.
+Maintainer: HAMA VIP
+Author: HAMA VIP
+Section: Tweaks
+Depends: mobilesubstrate
