@@ -5,7 +5,7 @@ THEOS_PACKAGE_SCHEME = rootless
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = HAMAOverlay
-HAMAOverlay_FILES = main.mm
+HAMAOverlay_FILES = main.xm
 HAMAOverlay_FRAMEWORKS = UIKit Foundation
 HAMAOverlay_CFLAGS = -fobjc-arc
 
