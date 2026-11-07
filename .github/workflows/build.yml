@@ -21,9 +21,23 @@ jobs:
       - name: Install Theos
         run: |
           git clone --recursive https://github.com/theos/theos.git "$THEOS"
-          git clone https://github.com/theos/sdks.git "$THEOS/sdks"
+          rm -rf "$THEOS/sdks"
+          git clone --depth=1 https://github.com/theos/sdks.git "$THEOS/sdks"
+
+      - name: Verify Theos
+        run: |
+          test -f "$THEOS/makefiles/common.mk"
+          test -f "$THEOS/makefiles/tweak.mk"
+          echo "Theos installed successfully"
 
       - name: Build package
         run: |
           make clean || true
           make package
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: HAMA-THOSE-Build
+          path: packages/*.deb
+          if-no-files-found: error
