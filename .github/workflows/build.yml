@@ -11,14 +11,19 @@ jobs:
   build:
     runs-on: macos-latest
 
+    env:
+      THEOS: ${{ github.workspace }}/theos
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install Theos
         run: |
-          git clone --recursive https://github.com/theos/theos.git $THEOS
+          git clone --recursive https://github.com/theos/theos.git "$THEOS"
+          git clone https://github.com/theos/sdks.git "$THEOS/sdks"
 
       - name: Build package
         run: |
+          make clean || true
           make package
